@@ -40,10 +40,37 @@ Argos tiene dos partes:
 - App: React, TypeScript y Vite, con hosting en Vercel (plan Hobby).
 - Lab: Python, Jupyter, pandas y scikit-learn, en local o en Google Colab.
 
+## Cómo correr la app
+
+Hace falta Node.js 20 o más nuevo. No hay backend ni variables de entorno.
+
+```bash
+npm install
+npm run dev
+```
+
+Se abre en `http://localhost:5173`. El avance del módulo queda en el `localStorage` del navegador.
+
+```bash
+npm run lint
+npm run typecheck
+npm run build
+npm run preview
+```
+
+`npm run build` también revisa que los correos de práctica usen solo dominios reservados (`.example` / `.invalid`) y que el código de la app no llame a la red.
+
+## Cómo publicarla en Vercel (plan Hobby, gratis)
+
+1. Entrá a [vercel.com](https://vercel.com) con el repositorio.
+2. Framework: Vite. El comando de build es `npm run build` y la salida es `dist`. No hace falta cambiarlos.
+3. No agregues variables de entorno, base de datos ni analíticas.
+4. Publicá. `vercel.json` manda las rutas de la app a `index.html` (para poder recargar `/phishing`) y agrega una política de contenido que no deja hablar con otros sitios.
+
 ## Hoja de ruta
 
-- [ ] **Fase 0.** Preparación: repo, README y reglas de ética.
-- [ ] **Fase 1.** MVP de la app con el módulo de phishing.
+- [x] **Fase 0.** Preparación: repo, README y reglas de ética.
+- [x] **Fase 1.** MVP de la app con el módulo de phishing.
 - [ ] **Fase 2.** Módulos de inyección SQL, XSS y fuerza bruta.
 - [ ] **Fase 3.** Laboratorio de datos con CIC-IDS2017.
 - [ ] **Fase 4.** Panel de detección en la app, más los módulos de malware y ransomware.
