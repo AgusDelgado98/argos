@@ -42,7 +42,7 @@ Argos tiene dos partes:
 
 ## Cómo correr la app
 
-Hace falta Node.js 20 o más nuevo. No hay backend ni variables de entorno.
+Hace falta Node.js 20.19 o más nuevo. No hay backend ni variables de entorno.
 
 ```bash
 npm install
