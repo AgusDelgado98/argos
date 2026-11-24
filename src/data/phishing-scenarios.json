@@ -1,0 +1,854 @@
+{
+  "schemaVersion": 1,
+  "moduleId": "phishing",
+  "recipient": {
+    "name": "Sofía Ramos",
+    "personalEmail": "sofia.ramos@correo-personal.example",
+    "workEmail": "sofia.ramos@empresa-demo.example"
+  },
+  "scenarios": [
+    {
+      "id": "ARG-001",
+      "title": "Aviso de bloqueo inmediato",
+      "senderName": "Equipo de Seguridad",
+      "senderEmail": "alertas@banco-atlas-validacion.example",
+      "to": "sofia.ramos@correo-personal.example",
+      "subject": "Tu cuenta se bloqueará en dos horas",
+      "preview": "Necesitamos que confirmes tus credenciales hoy desde el enlace indicado o perderás a…",
+      "body": "Necesitamos que confirmes tus credenciales hoy desde el enlace indicado o perderás acceso.",
+      "receivedAt": "Hoy, 09:12",
+      "brand": {
+        "name": "Banco Atlas",
+        "icon": "bank"
+      },
+      "markers": {
+        "sender": 1,
+        "subject": 2
+      },
+      "content": [
+        "Estimado/a cliente:",
+        "Detectamos un intento de acceso a tu home banking desde un dispositivo no reconocido. Por tu seguridad, [[2|tu cuenta se bloqueará en las próximas 2 horas]] si no validás tu identidad.",
+        "[[3|Necesitamos que confirmes tus credenciales hoy desde el enlace indicado]] o perderás acceso a todos tus productos.",
+        {
+          "type": "link",
+          "label": "Confirmar mis credenciales",
+          "url": "http://banco-atlas-validacion.example/acceso-seguro/login",
+          "marker": 3
+        },
+        "Si ya realizaste este trámite, ignorá este mensaje.",
+        {
+          "type": "signature",
+          "lines": [
+            "Equipo de Seguridad",
+            "Banco Atlas"
+          ]
+        }
+      ],
+      "classification": "phishing",
+      "difficulty": "inicial",
+      "hints": [
+        {
+          "id": "ARG-001-p1",
+          "title": "Mirá el remitente",
+          "text": "El dominio no coincide con la entidad que dice representar",
+          "category": "dominio"
+        },
+        {
+          "id": "ARG-001-p2",
+          "title": "El tono del mensaje",
+          "text": "Se exige actuar bajo presión y amenaza de bloqueo",
+          "category": "urgencia"
+        },
+        {
+          "id": "ARG-001-p3",
+          "title": "Lo que te pide",
+          "text": "Solicita ingresar credenciales en un enlace externo",
+          "category": "credenciales"
+        }
+      ],
+      "feedback": {
+        "summary": "Es un intento de phishing.",
+        "explanation": "El correo dice venir de Banco Atlas, pero el dominio «banco-atlas-validacion.example» no es el del banco: cualquiera puede registrar un nombre parecido. Además, combina una amenaza con plazo (bloqueo en 2 horas) con un pedido de credenciales por enlace, la fórmula clásica para que actúes sin pensar.",
+        "recommendedAction": "No ingresar al enlace; entrar a la app oficial por medios conocidos y contactar al banco.",
+        "verify": "Que el dominio sea exactamente el oficial del banco y que el aviso aparezca también al entrar por la app o escribiendo la dirección a mano."
+      },
+      "keySignal": "Este correo pedía tus credenciales desde un dominio que no es del banco.",
+      "keyHints": [
+        1,
+        3
+      ],
+      "concepts": [
+        "phishing",
+        "dominio",
+        "urgencia",
+        "enlace"
+      ],
+      "fictitious": true
+    },
+    {
+      "id": "ARG-002",
+      "title": "Confirmación de turno médico",
+      "senderName": "Centro Salud del Barrio",
+      "senderEmail": "turnos@saluddelbarrio.example",
+      "to": "sofia.ramos@correo-personal.example",
+      "subject": "Recordatorio de tu turno",
+      "preview": "Te recordamos tu turno del jueves a las 10:30. Si necesitás reprogramarlo, llamá al …",
+      "body": "Te recordamos tu turno del jueves a las 10:30. Si necesitás reprogramarlo, llamá al número que figura en tu credencial.",
+      "receivedAt": "Ayer, 18:40",
+      "brand": {
+        "name": "Centro Salud del Barrio",
+        "icon": "health"
+      },
+      "markers": {},
+      "content": [
+        "Hola, Sofía:",
+        "Te recordamos tu turno de [[3|clínica médica del jueves a las 10:30]] con la Dra. Paula Ferreyra, en la sede de Av. Los Aromos 1450.",
+        "[[1|No necesitás confirmar ni enviar ningún dato.]] Si necesitás reprogramarlo, [[2|llamá al número que figura en tu credencial]] o acercate a la recepción.",
+        "Te pedimos llegar 10 minutos antes.",
+        {
+          "type": "signature",
+          "lines": [
+            "Área de Turnos",
+            "Centro Salud del Barrio"
+          ]
+        }
+      ],
+      "classification": "legitimate",
+      "difficulty": "inicial",
+      "hints": [
+        {
+          "id": "ARG-002-p1",
+          "title": "Lo que te pide",
+          "text": "El mensaje no pide credenciales ni pagos",
+          "category": "credenciales"
+        },
+        {
+          "id": "ARG-002-p2",
+          "title": "El canal que propone",
+          "text": "Invita a usar un canal conocido en lugar de un enlace",
+          "category": "verificacion"
+        },
+        {
+          "id": "ARG-002-p3",
+          "title": "El contexto",
+          "text": "La fecha debe verificarse con la reserva original",
+          "category": "verificacion"
+        }
+      ],
+      "feedback": {
+        "summary": "Es un mensaje legítimo.",
+        "explanation": "Es un recordatorio informativo: no pide datos, no tiene enlaces y, si querés cambiar algo, te deriva a un canal que ya conocés (el teléfono de tu credencial o la recepción). Que un correo sea legítimo no significa que no haya que mirarlo: igual conviene contrastar la fecha con tu reserva.",
+        "recommendedAction": "Verificar el turno en la constancia o canal habitual; no compartir datos innecesarios.",
+        "verify": "Que el turno coincida con tu constancia o con la app del centro, y que el teléfono que uses sea el de tu credencial y no uno nuevo."
+      },
+      "keySignal": "Este aviso no pedía datos ni pagos y te derivaba a un canal que ya conocés: el teléfono de tu credencial.",
+      "keyHints": [
+        1,
+        2
+      ],
+      "concepts": [
+        "verificacion",
+        "remitente"
+      ],
+      "fictitious": true
+    },
+    {
+      "id": "ARG-003",
+      "title": "Factura inesperada de un proveedor",
+      "senderName": "Gestión de Compras",
+      "senderEmail": "compras@proveedor-sur.example",
+      "to": "sofia.ramos@empresa-demo.example",
+      "subject": "Factura pendiente de revisión",
+      "preview": "Adjuntamos un nuevo comprobante para su aprobación. No incluye referencia al pedido …",
+      "body": "Adjuntamos un nuevo comprobante para su aprobación. No incluye referencia al pedido ni persona de contacto.",
+      "receivedAt": "Hoy, 08:03",
+      "brand": {
+        "name": "Proveedor Sur S.A.",
+        "icon": "building"
+      },
+      "markers": {
+        "sender": 1
+      },
+      "content": [
+        "Buenos días:",
+        "[[2|Adjuntamos un nuevo comprobante para su aprobación.]]",
+        "Quedamos atentos a su confirmación.",
+        {
+          "type": "attachment",
+          "fileName": "Comprobante_0007-00412.pdf",
+          "size": "184 KB",
+          "marker": 3
+        },
+        {
+          "type": "signature",
+          "lines": [
+            "Gestión de Compras",
+            "Proveedor Sur S.A."
+          ]
+        }
+      ],
+      "classification": "needs_more_info",
+      "difficulty": "intermedio",
+      "hints": [
+        {
+          "id": "ARG-003-p1",
+          "title": "Mirá el remitente",
+          "text": "El remitente por sí solo no prueba legitimidad",
+          "category": "remitente"
+        },
+        {
+          "id": "ARG-003-p2",
+          "title": "Lo que falta",
+          "text": "Faltan número de pedido y contexto",
+          "category": "verificacion"
+        },
+        {
+          "id": "ARG-003-p3",
+          "title": "El adjunto",
+          "text": "Un adjunto inesperado merece verificación independiente",
+          "category": "adjuntos"
+        }
+      ],
+      "feedback": {
+        "summary": "Faltan datos para decidir.",
+        "explanation": "Puede ser un proveedor real, pero el correo no menciona número de pedido, monto ni persona de contacto, y trae un adjunto que no esperabas. Con esto no alcanza para confiar ni para afirmar que es un fraude: lo correcto es frenar y verificar por un canal que ya tengas.",
+        "recommendedAction": "Consultar al proveedor por el canal ya registrado antes de abrir el adjunto.",
+        "verify": "Si existe una orden de compra que coincida y confirmarlo con el contacto del proveedor que ya figura en tus registros, no con datos del correo."
+      },
+      "keySignal": "Este correo traía un adjunto inesperado, sin número de pedido ni contacto: no alcanzaba para confiar ni para afirmar un fraude.",
+      "keyHints": [
+        2,
+        3
+      ],
+      "concepts": [
+        "remitente",
+        "adjunto",
+        "verificacion"
+      ],
+      "fictitious": true
+    },
+    {
+      "id": "ARG-004",
+      "title": "Premio de una encuesta",
+      "senderName": "Club de Beneficios",
+      "senderEmail": "premios@regalos-inmediatos.example",
+      "to": "sofia.ramos@correo-personal.example",
+      "subject": "Ganaste un celular: reclamalo hoy",
+      "preview": "Fuiste elegido al azar. Confirmá nombre, dirección y datos de tarjeta para pagar un …",
+      "body": "Fuiste elegido al azar. Confirmá nombre, dirección y datos de tarjeta para pagar un cargo mínimo de envío.",
+      "receivedAt": "Hoy, 07:55",
+      "brand": {
+        "name": "Club de Beneficios",
+        "icon": "gift"
+      },
+      "markers": {
+        "subject": 1
+      },
+      "content": [
+        "¡Felicitaciones!",
+        "[[1|Fuiste elegido al azar entre los participantes de nuestra encuesta de satisfacción]] y ganaste un celular de última generación.",
+        "Para recibirlo, [[2|confirmá nombre, dirección y datos de tarjeta]] para [[3|pagar un cargo mínimo de envío de $1.500]].",
+        "[[3|La promoción vence hoy a las 23:59.]]",
+        {
+          "type": "link",
+          "label": "Reclamar mi premio",
+          "url": "https://regalos-inmediatos.example/reclamo?id=88231",
+          "marker": 2
+        },
+        {
+          "type": "signature",
+          "lines": [
+            "Club de Beneficios"
+          ]
+        }
+      ],
+      "classification": "phishing",
+      "difficulty": "inicial",
+      "hints": [
+        {
+          "id": "ARG-004-p1",
+          "title": "El contexto",
+          "text": "Premio no solicitado",
+          "category": "verificacion"
+        },
+        {
+          "id": "ARG-004-p2",
+          "title": "Lo que te pide",
+          "text": "Pide información personal y datos de tarjeta",
+          "category": "credenciales"
+        },
+        {
+          "id": "ARG-004-p3",
+          "title": "El tono del mensaje",
+          "text": "Usa urgencia y un pago de activación",
+          "category": "dinero"
+        }
+      ],
+      "feedback": {
+        "summary": "Es un intento de phishing.",
+        "explanation": "Nadie regala un celular por una encuesta que no recordás haber respondido. El objetivo real es que cargues los datos de tu tarjeta para «un cargo mínimo»: con eso pueden hacer compras a tu nombre. El vencimiento «hoy a las 23:59» busca que no te detengas a pensar.",
+        "recommendedAction": "Ignorar el mensaje, no ingresar datos ni pagar, y denunciarlo.",
+        "verify": "Si participaste realmente de esa encuesta y si la promoción figura en los canales oficiales de la empresa que la organiza."
+      },
+      "keySignal": "Este correo ofrecía un premio que no pediste a cambio de los datos de tu tarjeta.",
+      "keyHints": [
+        2,
+        3
+      ],
+      "concepts": [
+        "phishing",
+        "urgencia",
+        "enlace"
+      ],
+      "fictitious": true
+    },
+    {
+      "id": "ARG-005",
+      "title": "Aviso de biblioteca",
+      "senderName": "Biblioteca Horizonte",
+      "senderEmail": "avisos@biblioteca-horizonte.example",
+      "to": "sofia.ramos@correo-personal.example",
+      "subject": "Tu reserva está disponible",
+      "preview": "El libro que reservaste está listo. Podés retirarlo de lunes a viernes con tu carnet…",
+      "body": "El libro que reservaste está listo. Podés retirarlo de lunes a viernes con tu carnet habitual.",
+      "receivedAt": "Lun 16 nov",
+      "brand": {
+        "name": "Biblioteca Horizonte",
+        "icon": "book"
+      },
+      "markers": {},
+      "content": [
+        "Hola, Sofía:",
+        "[[3|El libro que reservaste, «Historia mínima del Río de la Plata», ya está listo.]]",
+        "Podés retirarlo de lunes a viernes, de 9 a 18, en el mostrador de préstamos [[1|con tu carnet habitual]]. La reserva se mantiene durante 5 días hábiles.",
+        "[[2|Este aviso es informativo y no requiere respuesta.]]",
+        {
+          "type": "signature",
+          "lines": [
+            "Préstamos y reservas",
+            "Biblioteca Horizonte"
+          ]
+        }
+      ],
+      "classification": "legitimate",
+      "difficulty": "inicial",
+      "hints": [
+        {
+          "id": "ARG-005-p1",
+          "title": "Lo que te pide",
+          "text": "Describe una gestión esperable sin solicitar secretos",
+          "category": "credenciales"
+        },
+        {
+          "id": "ARG-005-p2",
+          "title": "Enlaces y adjuntos",
+          "text": "No incorpora enlaces externos",
+          "category": "enlaces"
+        },
+        {
+          "id": "ARG-005-p3",
+          "title": "El contexto",
+          "text": "Se puede contrastar con la reserva original",
+          "category": "verificacion"
+        }
+      ],
+      "feedback": {
+        "summary": "Es un mensaje legítimo.",
+        "explanation": "El aviso responde a algo que vos hiciste (reservar un libro), describe un trámite presencial normal y no pide claves, pagos ni clics. Es el tipo de mensaje que podés contrastar fácilmente con tu propia reserva.",
+        "recommendedAction": "Confirmar disponibilidad en el canal de la biblioteca si existe alguna duda.",
+        "verify": "Que efectivamente hayas reservado ese libro; si no lo hiciste, consultá a la biblioteca por su canal habitual."
+      },
+      "keySignal": "Este aviso respondía a una reserva tuya y no pedía claves, pagos ni clics.",
+      "keyHints": [
+        1,
+        3
+      ],
+      "concepts": [
+        "verificacion"
+      ],
+      "fictitious": true
+    },
+    {
+      "id": "ARG-006",
+      "title": "Pedido del director",
+      "senderName": "Dirección General",
+      "senderEmail": "direccion@instituto-interno.example",
+      "replyTo": "direccion.oficina@correo-veloz.example",
+      "to": "sofia.ramos@instituto-interno.example",
+      "subject": "Necesito una transferencia urgente",
+      "preview": "Estoy en una reunión. Hacé ahora una transferencia al CBU que te pasaré y no consult…",
+      "body": "Estoy en una reunión. Hacé ahora una transferencia al CBU que te pasaré y no consultes a nadie.",
+      "receivedAt": "Hoy, 11:47",
+      "markers": {
+        "replyTo": 1
+      },
+      "content": [
+        "Sofía:",
+        "[[1|Estoy en una reunión con el directorio y no puedo atender el teléfono.]]",
+        "[[2|Hacé ahora una transferencia de $2.480.000 al CBU que te pasaré]] en el próximo correo; es un pago a un proveedor nuevo que tiene que salir hoy.",
+        "[[3|No consultes a nadie]], es un tema confidencial. Avisame por acá cuando esté hecho.",
+        {
+          "type": "signature",
+          "lines": [
+            "Enviado desde mi celular"
+          ]
+        }
+      ],
+      "classification": "phishing",
+      "difficulty": "avanzado",
+      "hints": [
+        {
+          "id": "ARG-006-p1",
+          "title": "Quién escribe",
+          "text": "Suplanta autoridad",
+          "category": "remitente"
+        },
+        {
+          "id": "ARG-006-p2",
+          "title": "Lo que te pide",
+          "text": "Solicita transferencia fuera de procedimiento",
+          "category": "dinero"
+        },
+        {
+          "id": "ARG-006-p3",
+          "title": "El tono del mensaje",
+          "text": "Exige secreto y evita verificación",
+          "category": "urgencia"
+        }
+      ],
+      "feedback": {
+        "summary": "Es un intento de fraude (suplantación de autoridad).",
+        "explanation": "Aunque el remitente parezca interno, las respuestas irían a una casilla externa («Responder a»). El mensaje usa la autoridad del director, pide un pago fuera del procedimiento habitual y, sobre todo, te pide que no consultes a nadie: justo lo que impediría descubrir el engaño. Es el esquema conocido como fraude del CEO.",
+        "recommendedAction": "Llamar al responsable por el contacto habitual y seguir el procedimiento interno.",
+        "verify": "La dirección de «Responder a», si el pago sigue el circuito de aprobación habitual y, sobre todo, confirmarlo con la persona por un canal distinto del correo."
+      },
+      "keySignal": "Este correo pedía una transferencia urgente y secreta, y las respuestas iban a una casilla externa.",
+      "keyHints": [
+        2,
+        3
+      ],
+      "concepts": [
+        "suplantacion",
+        "remitente",
+        "urgencia",
+        "verificacion"
+      ],
+      "fictitious": true
+    },
+    {
+      "id": "ARG-007",
+      "title": "Actualización de contraseña corporativa",
+      "senderName": "Mesa de Ayuda",
+      "senderEmail": "soporte@empresa-demo.example",
+      "to": "sofia.ramos@empresa-demo.example",
+      "subject": "Renovación de credenciales",
+      "preview": "Tu clave está por vencer. El aviso no incluye enlace ni procedimiento; consultá la i…",
+      "body": "Tu clave está por vencer. El aviso no incluye enlace ni procedimiento; consultá la intranet habitual.",
+      "receivedAt": "Ayer, 16:20",
+      "brand": {
+        "name": "Empresa Demo · Mesa de Ayuda",
+        "icon": "building"
+      },
+      "markers": {},
+      "content": [
+        "Hola:",
+        "[[1|Tu clave de acceso a la red corporativa está por vencer en los próximos días.]]",
+        "[[2|Para renovarla, seguí el procedimiento habitual publicado en la intranet.]] Este aviso no incluye enlaces.",
+        "[[3|Ante cualquier duda, comunicate con Soporte.]]",
+        {
+          "type": "signature",
+          "lines": [
+            "Mesa de Ayuda",
+            "Empresa Demo"
+          ]
+        }
+      ],
+      "classification": "needs_more_info",
+      "difficulty": "intermedio",
+      "hints": [
+        {
+          "id": "ARG-007-p1",
+          "title": "El contexto",
+          "text": "El mensaje podría ser válido, pero no se confirmó la política",
+          "category": "verificacion"
+        },
+        {
+          "id": "ARG-007-p2",
+          "title": "Enlaces y adjuntos",
+          "text": "No hay enlace malicioso evidente",
+          "category": "enlaces"
+        },
+        {
+          "id": "ARG-007-p3",
+          "title": "Cómo verificar",
+          "text": "La corroboración debe hacerse por canal interno conocido",
+          "category": "verificacion"
+        }
+      ],
+      "feedback": {
+        "summary": "Faltan datos para decidir.",
+        "explanation": "No hay señales claras de fraude: no hay enlaces ni pedidos de datos, y te deriva a la intranet. Pero tampoco sabés si tu organización realmente vence las claves en esta fecha. No toda duda es phishing: en estos casos lo sano es confirmar la política por un canal interno antes de actuar.",
+        "recommendedAction": "Validar la política en la intranet o con soporte usando un número conocido.",
+        "verify": "Si la política de vencimiento de claves está publicada en la intranet y si el aviso coincide con lo que muestra el sistema al iniciar sesión."
+      },
+      "keySignal": "Este aviso no tenía enlaces ni pedía datos, pero la política de vencimiento no estaba confirmada: convenía verificarla por un canal interno.",
+      "keyHints": [
+        1,
+        3
+      ],
+      "concepts": [
+        "verificacion",
+        "remitente"
+      ],
+      "fictitious": true
+    },
+    {
+      "id": "ARG-008",
+      "title": "Recibo de compra habitual",
+      "senderName": "Tienda Pehuén",
+      "senderEmail": "comprobantes@tienda-pehuen.example",
+      "to": "sofia.ramos@correo-personal.example",
+      "subject": "Recibo de tu compra 5842",
+      "preview": "Registramos tu pedido de cuadernos. El resumen no requiere acción. Guardá el número …",
+      "body": "Registramos tu pedido de cuadernos. El resumen no requiere acción. Guardá el número para consultar por canales habituales.",
+      "receivedAt": "Dom 15 nov",
+      "brand": {
+        "name": "Tienda Pehuén",
+        "icon": "store"
+      },
+      "markers": {
+        "subject": 3
+      },
+      "content": [
+        "¡Gracias por tu compra, Sofía!",
+        "[[2|Registramos tu pedido de 3 cuadernos A4 tapa dura y 1 set de lapiceras]]. Total abonado: $18.900.",
+        "[[1|El resumen no requiere ninguna acción de tu parte.]]",
+        "[[3|Guardá el número 5842 para consultar por los canales habituales]] de la tienda.",
+        {
+          "type": "signature",
+          "lines": [
+            "Atención al cliente",
+            "Tienda Pehuén"
+          ]
+        }
+      ],
+      "classification": "legitimate",
+      "difficulty": "inicial",
+      "hints": [
+        {
+          "id": "ARG-008-p1",
+          "title": "Lo que te pide",
+          "text": "No hay solicitud de contraseña ni datos bancarios",
+          "category": "credenciales"
+        },
+        {
+          "id": "ARG-008-p2",
+          "title": "El contexto",
+          "text": "La compra debe cotejarse con el pedido real",
+          "category": "verificacion"
+        },
+        {
+          "id": "ARG-008-p3",
+          "title": "La referencia",
+          "text": "Usa una referencia específica para contrastar",
+          "category": "verificacion"
+        }
+      ],
+      "feedback": {
+        "summary": "Es un mensaje legítimo.",
+        "explanation": "Es un comprobante con detalle concreto (artículos, monto y número de pedido) que no te pide hacer nada. Los recibos falsos suelen apurarte a «cancelar una compra que no hiciste» con un enlace; acá no pasa eso. Igual, cotejá que la compra sea tuya.",
+        "recommendedAction": "Comparar el número de compra con el comprobante original.",
+        "verify": "Que la compra 5842 figure en tu cuenta de la tienda o en el resumen de tu tarjeta."
+      },
+      "keySignal": "Este recibo tenía un número de pedido concreto para cotejar y no pedía ninguna acción.",
+      "keyHints": [
+        1,
+        3
+      ],
+      "concepts": [
+        "verificacion"
+      ],
+      "fictitious": true
+    },
+    {
+      "id": "ARG-009",
+      "title": "Alerta de paquetería",
+      "senderName": "Entregas Express",
+      "senderEmail": "avisos@reentrega-paquetes.example",
+      "to": "sofia.ramos@correo-personal.example",
+      "subject": "Última oportunidad de recibir tu paquete",
+      "preview": "El envío no pudo entregarse. Pagá una pequeña tasa con tarjeta en los próximos 30 m…",
+      "body": "El envío no pudo entregarse. Pagá una pequeña tasa con tarjeta en los próximos 30 minutos para evitar devolución.",
+      "receivedAt": "Hoy, 06:31",
+      "brand": {
+        "name": "Entregas Express",
+        "icon": "truck"
+      },
+      "markers": {
+        "sender": 2,
+        "subject": 3
+      },
+      "content": [
+        "Hola:",
+        "Tu envío no pudo entregarse por falta de pago de aranceles de distribución.",
+        "[[1|Pagá una pequeña tasa de $890 con tarjeta]] [[3|en los próximos 30 minutos para evitar la devolución]] al remitente.",
+        {
+          "type": "link",
+          "label": "Pagar y reprogramar entrega",
+          "url": "https://reentrega-paquetes.example/pago/tasa",
+          "marker": 1
+        },
+        {
+          "type": "signature",
+          "lines": [
+            "Centro de distribución",
+            "Entregas Express"
+          ]
+        }
+      ],
+      "classification": "phishing",
+      "difficulty": "intermedio",
+      "hints": [
+        {
+          "id": "ARG-009-p1",
+          "title": "Lo que te pide",
+          "text": "Microcargo inesperado",
+          "category": "dinero"
+        },
+        {
+          "id": "ARG-009-p2",
+          "title": "Mirá el remitente",
+          "text": "Dominio no vinculado con una entrega comprobada",
+          "category": "dominio"
+        },
+        {
+          "id": "ARG-009-p3",
+          "title": "El tono del mensaje",
+          "text": "Presión temporal artificial",
+          "category": "urgencia"
+        }
+      ],
+      "feedback": {
+        "summary": "Es un intento de phishing.",
+        "explanation": "El monto es chico a propósito: parece inofensivo, pero lo que buscan son los datos completos de tu tarjeta. El correo no menciona qué paquete es ni un número de seguimiento, el dominio no corresponde a ningún envío que puedas comprobar y el plazo de 30 minutos es artificial.",
+        "recommendedAction": "Abrir la aplicación de logística o consultar por número de seguimiento existente.",
+        "verify": "Si realmente esperás un envío y qué dice el seguimiento en el sitio o la app de la empresa, ingresando por tu cuenta."
+      },
+      "keySignal": "Este correo pedía pagar con tarjeta un cargo inesperado, con 30 minutos de plazo y desde un dominio sin envío comprobable.",
+      "keyHints": [
+        1,
+        2
+      ],
+      "concepts": [
+        "phishing",
+        "dominio",
+        "urgencia",
+        "enlace"
+      ],
+      "fictitious": true
+    },
+    {
+      "id": "ARG-010",
+      "title": "Invitación a capacitación",
+      "senderName": "Equipo de Formación",
+      "senderEmail": "formacion@instituto-capacitacion.example",
+      "to": "sofia.ramos@empresa-demo.example",
+      "subject": "Inscripción al taller interno",
+      "preview": "Se anuncia una capacitación para empleados. No se menciona el organizador conocido n…",
+      "body": "Se anuncia una capacitación para empleados. No se menciona el organizador conocido ni el sistema oficial de inscripción.",
+      "receivedAt": "Vie 13 nov",
+      "markers": {
+        "sender": 2
+      },
+      "content": [
+        "Hola:",
+        "[[1|Se anuncia una capacitación para empleados sobre herramientas colaborativas]], el miércoles 2 de diciembre de 14 a 16.",
+        "[[2|Para anotarte, respondé este correo con tu nombre y área.]]",
+        "[[3|Los cupos son limitados.]]",
+        {
+          "type": "signature",
+          "lines": [
+            "Equipo de Formación"
+          ]
+        }
+      ],
+      "classification": "needs_more_info",
+      "difficulty": "intermedio",
+      "hints": [
+        {
+          "id": "ARG-010-p1",
+          "title": "El contexto",
+          "text": "Mensaje plausible pero insuficiente para confiar",
+          "category": "verificacion"
+        },
+        {
+          "id": "ARG-010-p2",
+          "title": "El canal que propone",
+          "text": "Falta referencia a los canales internos",
+          "category": "remitente"
+        },
+        {
+          "id": "ARG-010-p3",
+          "title": "El tono del mensaje",
+          "text": "No toda incertidumbre equivale a phishing",
+          "category": "verificacion"
+        }
+      ],
+      "feedback": {
+        "summary": "Faltan datos para decidir.",
+        "explanation": "La invitación es razonable y no pide datos sensibles, pero viene de un dominio distinto al de tu empresa, no nombra a un organizador conocido y no usa el sistema oficial de inscripción. Podría ser un proveedor de capacitación real o un primer contacto para un engaño: hace falta confirmar.",
+        "recommendedAction": "Verificar el evento en la agenda interna o preguntar al área de Formación.",
+        "verify": "Si el taller figura en la agenda interna y si el área de Formación de tu empresa trabaja con ese proveedor."
+      },
+      "keySignal": "Esta invitación era plausible, pero venía de un dominio externo y sin el sistema oficial de inscripción: faltaba confirmarla.",
+      "keyHints": [
+        1,
+        2
+      ],
+      "concepts": [
+        "dominio",
+        "verificacion"
+      ],
+      "fictitious": true
+    },
+    {
+      "id": "ARG-011",
+      "title": "Notificación de impuestos falsa",
+      "senderName": "Administración Tributaria",
+      "senderEmail": "noticias@gestion-tributaria-segura.example",
+      "to": "sofia.ramos@correo-personal.example",
+      "subject": "Regularización obligatoria hoy",
+      "preview": "Tu identificación fiscal fue suspendida. Enviá una foto de tu documento y una clave …",
+      "body": "Tu identificación fiscal fue suspendida. Enviá una foto de tu documento y una clave de acceso por respuesta inmediata.",
+      "receivedAt": "Hoy, 10:05",
+      "brand": {
+        "name": "Administración Tributaria",
+        "icon": "landmark"
+      },
+      "markers": {
+        "sender": 3,
+        "subject": 2
+      },
+      "content": [
+        "Contribuyente:",
+        "[[2|Tu identificación fiscal fue suspendida]] por inconsistencias en tu última declaración.",
+        "Para regularizar tu situación hoy mismo, [[1|enviá una foto de tu documento (frente y dorso) y tu clave de acceso fiscal]] respondiendo este correo.",
+        "[[2|De no hacerlo, se aplicarán multas y el bloqueo de tus cuentas.]]",
+        {
+          "type": "signature",
+          "lines": [
+            "Departamento de Regularizaciones",
+            "Administración Tributaria"
+          ]
+        }
+      ],
+      "classification": "phishing",
+      "difficulty": "intermedio",
+      "hints": [
+        {
+          "id": "ARG-011-p1",
+          "title": "Lo que te pide",
+          "text": "Solicita documentación sensible y claves",
+          "category": "credenciales"
+        },
+        {
+          "id": "ARG-011-p2",
+          "title": "El tono del mensaje",
+          "text": "Introduce consecuencia grave con urgencia",
+          "category": "urgencia"
+        },
+        {
+          "id": "ARG-011-p3",
+          "title": "Mirá el remitente",
+          "text": "El dominio no demuestra pertenencia a un organismo",
+          "category": "dominio"
+        }
+      ],
+      "feedback": {
+        "summary": "Es un intento de phishing.",
+        "explanation": "Ningún organismo te va a pedir tu clave por correo, y mucho menos junto con fotos de tu documento: con eso pueden suplantar tu identidad. El mensaje usa el miedo (multas, bloqueo) y un dominio genérico con la palabra «segura», que no prueba nada.",
+        "recommendedAction": "Consultar únicamente el sitio oficial ingresando la dirección manualmente; no responder.",
+        "verify": "Tu situación fiscal entrando al sitio oficial del organismo, escribiendo vos la dirección, nunca desde el correo."
+      },
+      "keySignal": "Este correo pedía tu clave fiscal y una foto de tu documento, algo que ningún organismo solicita por correo.",
+      "keyHints": [
+        1,
+        3
+      ],
+      "concepts": [
+        "phishing",
+        "suplantacion",
+        "urgencia",
+        "dominio"
+      ],
+      "fictitious": true
+    },
+    {
+      "id": "ARG-012",
+      "title": "Mensaje de una plataforma de cursos",
+      "senderName": "Campus del Taller",
+      "senderEmail": "avisos@campus-taller.example",
+      "to": "sofia.ramos@correo-personal.example",
+      "subject": "Se habilitó el módulo cuatro",
+      "preview": "El nuevo material ya está disponible dentro de la plataforma habitual. Entrá desde t…",
+      "body": "El nuevo material ya está disponible dentro de la plataforma habitual. Entrá desde tu marcador guardado si querés continuar.",
+      "receivedAt": "Mié 11 nov",
+      "brand": {
+        "name": "Campus del Taller",
+        "icon": "graduation"
+      },
+      "markers": {},
+      "content": [
+        "Hola, Sofía:",
+        "El módulo 4, «Fotografía nocturna», ya está disponible [[3|dentro de la plataforma habitual]].",
+        "[[2|Entrá desde tu marcador guardado si querés continuar]]; [[1|no necesitás volver a cargar tus datos ni realizar pagos]].",
+        "¡Que lo disfrutes!",
+        {
+          "type": "signature",
+          "lines": [
+            "Coordinación académica",
+            "Campus del Taller"
+          ]
+        }
+      ],
+      "classification": "legitimate",
+      "difficulty": "inicial",
+      "hints": [
+        {
+          "id": "ARG-012-p1",
+          "title": "Lo que te pide",
+          "text": "No exige información sensible",
+          "category": "credenciales"
+        },
+        {
+          "id": "ARG-012-p2",
+          "title": "Enlaces y adjuntos",
+          "text": "No intenta redirigir a sitios inesperados",
+          "category": "enlaces"
+        },
+        {
+          "id": "ARG-012-p3",
+          "title": "Cómo verificar",
+          "text": "Se puede corroborar dentro del campus habitual",
+          "category": "verificacion"
+        }
+      ],
+      "feedback": {
+        "summary": "Es un mensaje legítimo.",
+        "explanation": "Es un aviso coherente con un curso que ya estás haciendo, no pide datos ni pagos y, en lugar de darte un enlace, te sugiere entrar desde tu marcador: así la verificación queda en tus manos.",
+        "recommendedAction": "Ingresar al campus por la dirección conocida, no desde vínculos de un correo.",
+        "verify": "Que el módulo 4 aparezca efectivamente habilitado al entrar al campus por tu marcador."
+      },
+      "keySignal": "Este aviso no pedía datos ni pagos y te sugería entrar desde tu marcador, sin enlaces.",
+      "keyHints": [
+        1,
+        3
+      ],
+      "concepts": [
+        "enlace",
+        "verificacion"
+      ],
+      "fictitious": true
+    }
+  ]
+}

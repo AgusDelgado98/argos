@@ -1,0 +1,34 @@
+
+> argos@0.1.0 test:e2e
+> playwright test
+
+
+Running 24 tests using 3 workers
+
+  -   2 [mobile] › e2e/smoke.spec.ts:23:1 › landing → simulador → decisión → análisis, sin errores de consola ni pedidos externos
+  ✓   4 [mobile] › e2e/smoke.spec.ts:58:1 › modo Desafío oculta pistas (652ms)
+  ✓   3 [tablet] › e2e/smoke.spec.ts:23:1 › landing → simulador → decisión → análisis, sin errores de consola ni pedidos externos (1.2s)
+  ✓   1 [desktop] › e2e/smoke.spec.ts:23:1 › landing → simulador → decisión → análisis, sin errores de consola ni pedidos externos (1.2s)
+  ✓   6 [tablet] › e2e/smoke.spec.ts:58:1 › modo Desafío oculta pistas (560ms)
+  -   8 [tablet] › e2e/smoke.spec.ts:67:1 › móvil: observar el correo → panel inferior → devolución constructiva
+  ✓   7 [desktop] › e2e/smoke.spec.ts:58:1 › modo Desafío oculta pistas (641ms)
+  -   9 [tablet] › e2e/smoke.spec.ts:106:1 › escritorio: devolución constructiva tras una respuesta equivocada
+  -  10 [desktop] › e2e/smoke.spec.ts:67:1 › móvil: observar el correo → panel inferior → devolución constructiva
+  -  11 [tablet] › e2e/smoke.spec.ts:156:1 › resumen final del Desafío con resultado mixto
+  -  13 [tablet] › e2e/smoke.spec.ts:243:1 › repaso guiado de las respuestas riesgosas, sin cambiar el Desafío
+  -  14 [tablet] › e2e/smoke.spec.ts:326:1 › repaso: un solo caso
+  ✓   5 [mobile] › e2e/smoke.spec.ts:67:1 › móvil: observar el correo → panel inferior → devolución constructiva (1.4s)
+  -  15 [tablet] › e2e/smoke.spec.ts:340:1 › repaso: cero casos riesgosos ofrece otra acción
+  -  16 [mobile] › e2e/smoke.spec.ts:106:1 › escritorio: devolución constructiva tras una respuesta equivocada
+  ✓  12 [desktop] › e2e/smoke.spec.ts:106:1 › escritorio: devolución constructiva tras una respuesta equivocada (1.1s)
+  ✓  17 [mobile] › e2e/smoke.spec.ts:156:1 › resumen final del Desafío con resultado mixto (2.0s)
+  ✓  18 [desktop] › e2e/smoke.spec.ts:156:1 › resumen final del Desafío con resultado mixto (1.5s)
+  ✓  20 [desktop] › e2e/smoke.spec.ts:243:1 › repaso guiado de las respuestas riesgosas, sin cambiar el Desafío (2.5s)
+  ✓  21 [desktop] › e2e/smoke.spec.ts:326:1 › repaso: un solo caso (635ms)
+  ✓  19 [mobile] › e2e/smoke.spec.ts:243:1 › repaso guiado de las respuestas riesgosas, sin cambiar el Desafío (3.5s)
+  -  23 [mobile] › e2e/smoke.spec.ts:326:1 › repaso: un solo caso
+  -  24 [mobile] › e2e/smoke.spec.ts:340:1 › repaso: cero casos riesgosos ofrece otra acción
+  ✓  22 [desktop] › e2e/smoke.spec.ts:340:1 › repaso: cero casos riesgosos ofrece otra acción (520ms)
+
+  11 skipped
+  13 passed (9.5s)

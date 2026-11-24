@@ -1,0 +1,17 @@
+
+> argos@0.1.0 test
+> vitest run
+
+
+ RUN  v5.1.1 /workspace/argos
+
+
+ Test Files  14 passed (14)
+      Tests  100 passed (100)
+   Start at  21:41:08
+   Duration  6.23s (tests 42%, environment 35%, import 10%, transform 7%, setup 6%)
+
+Environment  jsdom was created 14 times · 6.20s total, 35% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

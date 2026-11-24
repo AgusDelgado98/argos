@@ -1,0 +1,5 @@
+
+> argos@0.1.0 typecheck
+> tsc -b --noEmit
+
+TYPECHECK_OK

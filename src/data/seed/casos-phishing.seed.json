@@ -1,0 +1,350 @@
+[
+  {
+    "id": "ARG-001",
+    "title": "Aviso de bloqueo inmediato",
+    "senderName": "Equipo de Seguridad",
+    "senderEmail": "alertas@banco-atlas-validacion.example",
+    "subject": "Tu cuenta se bloqueará en dos horas",
+    "preview": "Necesitamos que confirmes tus credenciales hoy desde el enlace indicado o perderás a…",
+    "body": "Necesitamos que confirmes tus credenciales hoy desde el enlace indicado o perderás acceso.",
+    "classification": "phishing",
+    "hints": [
+      {
+        "id": "ARG-001-p1",
+        "text": "El dominio no coincide con la entidad que dice representar"
+      },
+      {
+        "id": "ARG-001-p2",
+        "text": "Se exige actuar bajo presión y amenaza de bloqueo"
+      },
+      {
+        "id": "ARG-001-p3",
+        "text": "Solicita ingresar credenciales en un enlace externo"
+      }
+    ],
+    "feedback": {
+      "explanation": "Señales clave: El dominio no coincide con la entidad que dice representar; Se exige actuar bajo presión y amenaza de bloqueo; Solicita ingresar credenciales en un enlace externo.",
+      "recommendedAction": "No ingresar al enlace; entrar a la app oficial por medios conocidos y contactar al banco."
+    },
+    "fictitious": true
+  },
+  {
+    "id": "ARG-002",
+    "title": "Confirmación de turno médico",
+    "senderName": "Centro Salud del Barrio",
+    "senderEmail": "turnos@saluddelbarrio.example",
+    "subject": "Recordatorio de tu turno",
+    "preview": "Te recordamos tu turno del jueves a las 10:30. Si necesitás reprogramarlo, llamá al …",
+    "body": "Te recordamos tu turno del jueves a las 10:30. Si necesitás reprogramarlo, llamá al número que figura en tu credencial.",
+    "classification": "legitimate",
+    "hints": [
+      {
+        "id": "ARG-002-p1",
+        "text": "El mensaje no pide credenciales ni pagos"
+      },
+      {
+        "id": "ARG-002-p2",
+        "text": "Invita a usar un canal conocido en lugar de un enlace"
+      },
+      {
+        "id": "ARG-002-p3",
+        "text": "La fecha debe verificarse con la reserva original"
+      }
+    ],
+    "feedback": {
+      "explanation": "Señales clave: El mensaje no pide credenciales ni pagos; Invita a usar un canal conocido en lugar de un enlace; La fecha debe verificarse con la reserva original.",
+      "recommendedAction": "Verificar el turno en la constancia o canal habitual; no compartir datos innecesarios."
+    },
+    "fictitious": true
+  },
+  {
+    "id": "ARG-003",
+    "title": "Factura inesperada de un proveedor",
+    "senderName": "Gestión de Compras",
+    "senderEmail": "compras@proveedor-sur.example",
+    "subject": "Factura pendiente de revisión",
+    "preview": "Adjuntamos un nuevo comprobante para su aprobación. No incluye referencia al pedido …",
+    "body": "Adjuntamos un nuevo comprobante para su aprobación. No incluye referencia al pedido ni persona de contacto.",
+    "classification": "needs_more_info",
+    "hints": [
+      {
+        "id": "ARG-003-p1",
+        "text": "El remitente por sí solo no prueba legitimidad"
+      },
+      {
+        "id": "ARG-003-p2",
+        "text": "Faltan número de pedido y contexto"
+      },
+      {
+        "id": "ARG-003-p3",
+        "text": "Un adjunto inesperado merece verificación independiente"
+      }
+    ],
+    "feedback": {
+      "explanation": "Señales clave: El remitente por sí solo no prueba legitimidad; Faltan número de pedido y contexto; Un adjunto inesperado merece verificación independiente.",
+      "recommendedAction": "Consultar al proveedor por el canal ya registrado antes de abrir el adjunto."
+    },
+    "fictitious": true
+  },
+  {
+    "id": "ARG-004",
+    "title": "Premio de una encuesta",
+    "senderName": "Club de Beneficios",
+    "senderEmail": "premios@regalos-inmediatos.example",
+    "subject": "Ganaste un celular: reclamalo hoy",
+    "preview": "Fuiste elegido al azar. Confirmá nombre, dirección y datos de tarjeta para pagar un …",
+    "body": "Fuiste elegido al azar. Confirmá nombre, dirección y datos de tarjeta para pagar un cargo mínimo de envío.",
+    "classification": "phishing",
+    "hints": [
+      {
+        "id": "ARG-004-p1",
+        "text": "Premio no solicitado"
+      },
+      {
+        "id": "ARG-004-p2",
+        "text": "Pide información personal y datos de tarjeta"
+      },
+      {
+        "id": "ARG-004-p3",
+        "text": "Usa urgencia y un pago de activación"
+      }
+    ],
+    "feedback": {
+      "explanation": "Señales clave: Premio no solicitado; Pide información personal y datos de tarjeta; Usa urgencia y un pago de activación.",
+      "recommendedAction": "Ignorar el mensaje, no ingresar datos ni pagar, y denunciarlo."
+    },
+    "fictitious": true
+  },
+  {
+    "id": "ARG-005",
+    "title": "Aviso de biblioteca",
+    "senderName": "Biblioteca Horizonte",
+    "senderEmail": "avisos@biblioteca-horizonte.example",
+    "subject": "Tu reserva está disponible",
+    "preview": "El libro que reservaste está listo. Podés retirarlo de lunes a viernes con tu carnet…",
+    "body": "El libro que reservaste está listo. Podés retirarlo de lunes a viernes con tu carnet habitual.",
+    "classification": "legitimate",
+    "hints": [
+      {
+        "id": "ARG-005-p1",
+        "text": "Describe una gestión esperable sin solicitar secretos"
+      },
+      {
+        "id": "ARG-005-p2",
+        "text": "No incorpora enlaces externos"
+      },
+      {
+        "id": "ARG-005-p3",
+        "text": "Se puede contrastar con la reserva original"
+      }
+    ],
+    "feedback": {
+      "explanation": "Señales clave: Describe una gestión esperable sin solicitar secretos; No incorpora enlaces externos; Se puede contrastar con la reserva original.",
+      "recommendedAction": "Confirmar disponibilidad en el canal de la biblioteca si existe alguna duda."
+    },
+    "fictitious": true
+  },
+  {
+    "id": "ARG-006",
+    "title": "Pedido del director",
+    "senderName": "Dirección General",
+    "senderEmail": "direccion@instituto-interno.example",
+    "subject": "Necesito una transferencia urgente",
+    "preview": "Estoy en una reunión. Hacé ahora una transferencia al CBU que te pasaré y no consult…",
+    "body": "Estoy en una reunión. Hacé ahora una transferencia al CBU que te pasaré y no consultes a nadie.",
+    "classification": "phishing",
+    "hints": [
+      {
+        "id": "ARG-006-p1",
+        "text": "Suplanta autoridad"
+      },
+      {
+        "id": "ARG-006-p2",
+        "text": "Solicita transferencia fuera de procedimiento"
+      },
+      {
+        "id": "ARG-006-p3",
+        "text": "Exige secreto y evita verificación"
+      }
+    ],
+    "feedback": {
+      "explanation": "Señales clave: Suplanta autoridad; Solicita transferencia fuera de procedimiento; Exige secreto y evita verificación.",
+      "recommendedAction": "Llamar al responsable por el contacto habitual y seguir el procedimiento interno."
+    },
+    "fictitious": true
+  },
+  {
+    "id": "ARG-007",
+    "title": "Actualización de contraseña corporativa",
+    "senderName": "Mesa de Ayuda",
+    "senderEmail": "soporte@empresa-demo.example",
+    "subject": "Renovación de credenciales",
+    "preview": "Tu clave está por vencer. El aviso no incluye enlace ni procedimiento; consultá la i…",
+    "body": "Tu clave está por vencer. El aviso no incluye enlace ni procedimiento; consultá la intranet habitual.",
+    "classification": "needs_more_info",
+    "hints": [
+      {
+        "id": "ARG-007-p1",
+        "text": "El mensaje podría ser válido, pero no se confirmó la política"
+      },
+      {
+        "id": "ARG-007-p2",
+        "text": "No hay enlace malicioso evidente"
+      },
+      {
+        "id": "ARG-007-p3",
+        "text": "La corroboración debe hacerse por canal interno conocido"
+      }
+    ],
+    "feedback": {
+      "explanation": "Señales clave: El mensaje podría ser válido, pero no se confirmó la política; No hay enlace malicioso evidente; La corroboración debe hacerse por canal interno conocido.",
+      "recommendedAction": "Validar la política en la intranet o con soporte usando un número conocido."
+    },
+    "fictitious": true
+  },
+  {
+    "id": "ARG-008",
+    "title": "Recibo de compra habitual",
+    "senderName": "Tienda Pehuén",
+    "senderEmail": "comprobantes@tienda-pehuen.example",
+    "subject": "Recibo de tu compra 5842",
+    "preview": "Registramos tu pedido de cuadernos. El resumen no requiere acción. Guardá el número …",
+    "body": "Registramos tu pedido de cuadernos. El resumen no requiere acción. Guardá el número para consultar por canales habituales.",
+    "classification": "legitimate",
+    "hints": [
+      {
+        "id": "ARG-008-p1",
+        "text": "No hay solicitud de contraseña ni datos bancarios"
+      },
+      {
+        "id": "ARG-008-p2",
+        "text": "La compra debe cotejarse con el pedido real"
+      },
+      {
+        "id": "ARG-008-p3",
+        "text": "Usa una referencia específica para contrastar"
+      }
+    ],
+    "feedback": {
+      "explanation": "Señales clave: No hay solicitud de contraseña ni datos bancarios; La compra debe cotejarse con el pedido real; Usa una referencia específica para contrastar.",
+      "recommendedAction": "Comparar el número de compra con el comprobante original."
+    },
+    "fictitious": true
+  },
+  {
+    "id": "ARG-009",
+    "title": "Alerta de paquetería",
+    "senderName": "Entregas Express",
+    "senderEmail": "avisos@reentrega-paquetes.example",
+    "subject": "Última oportunidad de recibir tu paquete",
+    "preview": "El envío no pudo entregarse. Pagá una pequeña tasa con tarjeta en las próximas 30 mi…",
+    "body": "El envío no pudo entregarse. Pagá una pequeña tasa con tarjeta en las próximas 30 minutos para evitar devolución.",
+    "classification": "phishing",
+    "hints": [
+      {
+        "id": "ARG-009-p1",
+        "text": "Microcargo inesperado"
+      },
+      {
+        "id": "ARG-009-p2",
+        "text": "Dominio no vinculado con una entrega comprobada"
+      },
+      {
+        "id": "ARG-009-p3",
+        "text": "Presión temporal artificial"
+      }
+    ],
+    "feedback": {
+      "explanation": "Señales clave: Microcargo inesperado; Dominio no vinculado con una entrega comprobada; Presión temporal artificial.",
+      "recommendedAction": "Abrir la aplicación de logística o consultar por número de seguimiento existente."
+    },
+    "fictitious": true
+  },
+  {
+    "id": "ARG-010",
+    "title": "Invitación a capacitación",
+    "senderName": "Equipo de Formación",
+    "senderEmail": "formacion@instituto-capacitacion.example",
+    "subject": "Inscripción al taller interno",
+    "preview": "Se anuncia una capacitación para empleados. No se menciona el organizador conocido n…",
+    "body": "Se anuncia una capacitación para empleados. No se menciona el organizador conocido ni el sistema oficial de inscripción.",
+    "classification": "needs_more_info",
+    "hints": [
+      {
+        "id": "ARG-010-p1",
+        "text": "Mensaje plausible pero insuficiente para confiar"
+      },
+      {
+        "id": "ARG-010-p2",
+        "text": "Falta referencia a los canales internos"
+      },
+      {
+        "id": "ARG-010-p3",
+        "text": "No toda incertidumbre equivale a phishing"
+      }
+    ],
+    "feedback": {
+      "explanation": "Señales clave: Mensaje plausible pero insuficiente para confiar; Falta referencia a los canales internos; No toda incertidumbre equivale a phishing.",
+      "recommendedAction": "Verificar el evento en la agenda interna o preguntar al área de Formación."
+    },
+    "fictitious": true
+  },
+  {
+    "id": "ARG-011",
+    "title": "Notificación de impuestos falsa",
+    "senderName": "Administración Tributaria",
+    "senderEmail": "noticias@gestion-tributaria-segura.example",
+    "subject": "Regularización obligatoria hoy",
+    "preview": "Tu identificación fiscal fue suspendida. Enviá una foto de tu documento y una clave …",
+    "body": "Tu identificación fiscal fue suspendida. Enviá una foto de tu documento y una clave de acceso por respuesta inmediata.",
+    "classification": "phishing",
+    "hints": [
+      {
+        "id": "ARG-011-p1",
+        "text": "Solicita documentación sensible y claves"
+      },
+      {
+        "id": "ARG-011-p2",
+        "text": "Introduce consecuencia grave con urgencia"
+      },
+      {
+        "id": "ARG-011-p3",
+        "text": "El dominio no demuestra pertenencia a un organismo"
+      }
+    ],
+    "feedback": {
+      "explanation": "Señales clave: Solicita documentación sensible y claves; Introduce consecuencia grave con urgencia; El dominio no demuestra pertenencia a un organismo.",
+      "recommendedAction": "Consultar únicamente el sitio oficial ingresando la dirección manualmente; no responder."
+    },
+    "fictitious": true
+  },
+  {
+    "id": "ARG-012",
+    "title": "Mensaje de una plataforma de cursos",
+    "senderName": "Campus del Taller",
+    "senderEmail": "avisos@campus-taller.example",
+    "subject": "Se habilitó el módulo cuatro",
+    "preview": "El nuevo material ya está disponible dentro de la plataforma habitual. Entrá desde t…",
+    "body": "El nuevo material ya está disponible dentro de la plataforma habitual. Entrá desde tu marcador guardado si querés continuar.",
+    "classification": "legitimate",
+    "hints": [
+      {
+        "id": "ARG-012-p1",
+        "text": "No exige información sensible"
+      },
+      {
+        "id": "ARG-012-p2",
+        "text": "No intenta redirigir a sitios inesperados"
+      },
+      {
+        "id": "ARG-012-p3",
+        "text": "Se puede corroborar dentro del campus habitual"
+      }
+    ],
+    "feedback": {
+      "explanation": "Señales clave: No exige información sensible; No intenta redirigir a sitios inesperados; Se puede corroborar dentro del campus habitual.",
+      "recommendedAction": "Ingresar al campus por la dirección conocida, no desde vínculos de un correo."
+    },
+    "fictitious": true
+  }
+]
